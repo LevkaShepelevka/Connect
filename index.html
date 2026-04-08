@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>ДЕЛО № FAASSEN / РЕЖИССЁР & МУЗА</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0c0a08;
+            background-image: 
+                repeating-linear-gradient(45deg, rgba(80, 60, 40, 0.1) 0px, rgba(80, 60, 40, 0.1) 2px, transparent 2px, transparent 8px),
+                radial-gradient(circle at 30% 10%, #2a2119, #030201);
+            font-family: 'Courier New', 'Fira Code', monospace;
+            min-height: 100vh;
+            padding: 2rem 1.5rem;
+        }
+
+        /* главный контейнер — как папка с уликами */
+        .case-file {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: #faf3e8;
+            background: linear-gradient(145deg, #fff5ea 0%, #f2e5d4 100%);
+            border: 1px solid #b48b54;
+            border-radius: 24px 12px 24px 12px;
+            box-shadow: 0 30px 50px -20px #000, 0 0 0 8px #d8c2a4, 0 0 0 12px #5e3e22;
+            padding: 2rem 2rem 3rem;
+            position: relative;
+        }
+
+        /* гриф "СОВЕРШЕННО СЕКРЕТНО" */
+        .stamp {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            background: #b37b42;
+            color: #faf0dd;
+            font-family: monospace;
+            font-weight: bold;
+            font-size: 14px;
+            padding: 8px 16px;
+            transform: rotate(6deg);
+            border-radius: 40px;
+            letter-spacing: 2px;
+            border: 1px solid #f3cf9a;
+            box-shadow: 0 0 0 2px #2e241a;
+        }
+
+        /* заголовок */
+        .header h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            letter-spacing: -2px;
+            color: #2a1a0a;
+            text-transform: uppercase;
+            border-left: 8px solid #c2813a;
+            padding-left: 1.5rem;
+            margin: 1rem 0 0.5rem;
+            font-family: 'Courier New', monospace;
+        }
+
+        .header h1 span {
+            color: #9b5a2a;
+            font-size: 2rem;
+        }
+
+        .subhead {
+            font-size: 1.2rem;
+            color: #6a4a2a;
+            margin-bottom: 2rem;
+            border-bottom: 2px dashed #dbbd8c;
+            padding-bottom: 0.75rem;
+            display: inline-block;
+        }
+
+        /* видео блок */
+        .video-container {
+            margin: 2rem 0;
+            border-radius: 32px;
+            overflow: hidden;
+            box-shadow: 0 20px 30px -12px black;
+            border: 2px solid #ac8b60;
+        }
+
+        .video-container iframe {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            display: block;
+        }
+
+        /* галерея */
+        .gallery-section {
+            margin: 2.5rem 0;
+        }
+
+        .gallery-title {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #3b2a1a;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .gallery-frame {
+            background: #221c14;
+            border-radius: 28px;
+            padding: 20px;
+            box-shadow: inset 0 0 0 2px #9c7a56, 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .slider {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .slider img {
+            max-width: 100%;
+            max-height: 460px;
+            border-radius: 20px;
+            object-fit: contain;
+            background: #00000055;
+            box-shadow: 0 0 0 4px #eccea8;
+        }
+
+        .nav-btn {
+            background: #523f2c;
+            border: none;
+            color: white;
+            font-size: 2.2rem;
+            font-weight: bold;
+            padding: 0 20px;
+            border-radius: 60px;
+            cursor: pointer;
+            transition: 0.2s;
+            margin: 0 10px;
+            height: 60px;
+            width: 60px;
+        }
+
+        .nav-btn:hover {
+            background: #a56b2f;
+            transform: scale(0.95);
+        }
+
+        /* дерзкий текст */
+        .manifesto {
+            background: #e7dccb;
+            border-left: 14px solid #b9511b;
+            padding: 1.8rem;
+            margin: 2rem 0;
+            font-size: 1.2rem;
+            line-height: 1.6;
+            font-family: 'Courier New', monospace;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .manifesto p {
+            margin-bottom: 1rem;
+        }
+
+        .big-guarantee {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #ad3f0a;
+            text-align: center;
+            margin: 2rem 0;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+        }
+
+        /* голосовой отказ */
+        .voice-refusal {
+            background: #2d241c;
+            border-radius: 60px;
+            padding: 2rem;
+            margin: 2rem 0;
+            text-align: center;
+            color: #ffedc9;
+        }
+
+        .mic-button {
+            background: #cc6f2c;
+            border: none;
+            font-size: 3rem;
+            padding: 1rem 2rem;
+            border-radius: 100px;
+            cursor: pointer;
+            font-weight: bold;
+            color: white;
+            margin: 1rem 0;
+            transition: 0.1s linear;
+        }
+
+        .mic-button:active {
+            background: #8a3f0c;
+            transform: scale(0.96);
+        }
+
+        #status {
+            font-family: monospace;
+            margin-top: 15px;
+            font-size: 1rem;
+        }
+
+        footer {
+            margin-top: 3rem;
+            text-align: right;
+            font-size: 0.9rem;
+            border-top: 1px solid #bba16f;
+            padding-top: 1.5rem;
+            color: #6e4f2a;
+        }
+
+        @media (max-width: 680px) {
+            .case-file { padding: 1rem; }
+            .header h1 { font-size: 2.2rem; }
+            .nav-btn { font-size: 1.5rem; width: 45px; height: 45px; }
+            .big-guarantee { font-size: 1.2rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="case-file">
+    <div class="stamp">⚡ ВЛАДЕЛЬЦУ — ГОЛОС</div>
+
+    <div class="header">
+        <h1>ДЕЛО № FAASSEN<br><span>РЕЖИССЁР / МУЗА</span></h1>
+        <div class="subhead">▸ материал без цензуры. выбор только голосом.</div>
+    </div>
+
+    <!-- ВИДЕО - клип (замени VIDEO_ID на свой) -->
+    <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/VIDEO_ID?autoplay=0&mute=0" 
+                title="клип режиссёр-муза" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+        </iframe>
+    </div>
+
+    <!-- ФОТОГАЛЕРЕЯ (листалка) -->
+    <div class="gallery-section">
+        <div class="gallery-title">📸 УЛИКИ / ОБРАЗЫ</div>
+        <div class="gallery-frame">
+            <div class="slider">
+                <button class="nav-btn" id="prevImg">◀</button>
+                <img id="galleryImage" src="https://placehold.co/800x500/4a3624/f7e5cd?text=Первый+образ" alt="фото музы">
+                <button class="nav-btn" id="nextImg">▶</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- МАНИФЕСТ — без извинений, без унижений -->
+    <div class="manifesto">
+        <p>📢 Я НАПИСАЛ НА ЭМОЦИЯХ. ВСЁ, ЧТО НАПИСАЛ — ПРАВДА. ОСКОРБЛЕНИЙ НЕТ. УНИЖЕНИЯ НЕТ. ЕСТЬ ФАКТЫ И РЕАКЦИЯ НА ВАШУ ИГРУ.</p>
+        <p>🎬 ТЫ — МУЗА. Я — РЕЖИССЁР. ЭТО НЕ ОБСУЖДАЕТСЯ.</p>
+        <p>🔴 ХОЧЕШЬ ПРЕКРАТИТЬ НАШИ ДРУЖЕСКО-ТВОРЧЕСКИЕ ОТНОШЕНИЯ — ПОЗВОНИ И СКАЖИ. ГОЛОСОМ. БЕЗ ТЕКСТА. БЕЗ МУЖА. БЕЗ ПОСРЕДНИКОВ.</p>
+        <p>💔 НАСЧЁТ ЛЮБВИ НЕ ОБЕЩАЮ. Я ТЕБЯ НЕ ВИДЕЛ. ВСЁ ВОЗМОЖНО ПРИ ВЗАИМНОМ ИНТЕРЕСЕ. НО ГАРАНТИЙ НЕТ. ЭТО ЧЕСТНО.</p>
+    </div>
+
+    <div class="big-guarantee">
+        ⚡ ЛУЧШЕ ХУЙ ТЫ НАЙДЁШЬ, ЧЕМ ТАКОГО РЕЖИССЁРА. ЭТО БЛЯТЬ ГАРАНТИЯ. ⚡
+    </div>
+
+    <!-- ГОЛОСОВОЙ ОТКАЗ (работает через микрофон) -->
+    <div class="voice-refusal">
+        <p style="font-size: 1.6rem; margin-bottom: 10px;">🎙️ ТВОЙ ВЫБОР — ТВОЙ ГОЛОС</p>
+        <p>Если хочешь закончить — скажи "НЕТ", "ОТКАЗ" или "ПРЕКРАЩАЮ" в микрофон. Или просто объясни причину. Система зафиксирует.</p>
+        <button class="mic-button" id="recordBtn">🎤 ЗАПИСАТЬ ОТКАЗ / РЕШЕНИЕ</button>
+        <div id="status">⚡ готов к записи. скажи правду.</div>
+        <p style="font-size: 0.85rem; margin-top: 20px;">✋ Без голоса — нет отказа. Молчание = продолжение творческого диалога.</p>
+    </div>
+
+    <footer>
+        честь имею · режиссёр Левка Шепелевка<br>
+        https://levkashepelevka.github.io/Connect
+    </footer>
+</div>
+
+<script>
+    // ----- ГАЛЕРЕЯ (замени ссылки на свои фото) -----
+    const images = [
+        "https://placehold.co/800x500/4a3624/f7e5cd?text=Образ+1",
+        "https://placehold.co/800x500/5c4530/fbe9cf?text=Образ+2",
+        "https://placehold.co/800x500/3e2d1d/f2ddbb?text=Образ+3",
+        "https://placehold.co/800x500/6f523b/fcf0df?text=Муза+кадр"
+    ];
+    let currentIndex = 0;
+    const galleryImg = document.getElementById("galleryImage");
+    const prevBtn = document.getElementById("prevImg");
+    const nextBtn = document.getElementById("nextImg");
+
+    function updateImage() {
+        galleryImg.src = images[currentIndex];
+    }
+    prevBtn.addEventListener("click", () => {
+        currentIndex = (currentIndex - 1 + images.length) % images.length;
+        updateImage();
+    });
+    nextBtn.addEventListener("click", () => {
+        currentIndex = (currentIndex + 1) % images.length;
+        updateImage();
+    });
+    updateImage();
+
+    // ----- ГОЛОСОВОЙ ОТКАЗ (Speech Recognition) -----
+    const recordBtn = document.getElementById("recordBtn");
+    const statusDiv = document.getElementById("status");
+
+    if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
+        statusDiv.innerText = "❌ Твой браузер не поддерживает голосовой хуй. Используй хром/сафари/эдж.";
+        recordBtn.disabled = true;
+    } else {
+        const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+        const recognition = new SpeechRecognition();
+        recognition.lang = 'ru-RU';
+        recognition.interimResults = false;
+        recognition.maxAlternatives = 1;
+
+        recordBtn.addEventListener("click", () => {
+            statusDiv.innerText = "🎙️ слушаю... скажи свой ответ (отказ или решение)";
+            recordBtn.disabled = true;
+            recognition.start();
+        });
+
+        recognition.onresult = (event) => {
+            const speechText = event.results[0][0].transcript.toLowerCase();
+            statusDiv.innerHTML = `🔊 Ты сказал(а): «${speechText}»<br>📩 Запись зафиксирована. Это твой голос — твой выбор.`;
+            recordBtn.disabled = false;
+
+            // небольшое оповещение (можно убрать)
+            if (speechText.includes("нет") || speechText.includes("отказ") || speechText.includes("прекращаю")) {
+                statusDiv.innerHTML += `<br><span style="color:#ffaa66;">⚡ Отказ принят. Дверь открыта — ты выбрала тишину.</span>`;
+            } else {
+                statusDiv.innerHTML += `<br><span style="color:#b3d9ff;">🎭 Ты не сказала «нет». Продолжаем творческий диалог.</span>`;
+            }
+        };
+
+        recognition.onerror = (event) => {
+            statusDiv.innerText = `❌ Ошибка микрофона: ${event.error}. попробуй ещё.`;
+            recordBtn.disabled = false;
+        };
+
+        recognition.onend = () => {
+            if (recordBtn.disabled) {
+                // если закончилось без результата
+                statusDiv.innerText = "🎙️ микрофон отключён. нажми кнопку, чтобы сказать снова.";
+                recordBtn.disabled = false;
+            }
+        };
+    }
+</script>
+</body>
+</html>
