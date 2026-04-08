@@ -21,11 +21,9 @@
             padding: 2rem 1.5rem;
         }
 
-        /* главный контейнер — как папка с уликами */
         .case-file {
             max-width: 1100px;
             margin: 0 auto;
-            background: #faf3e8;
             background: linear-gradient(145deg, #fff5ea 0%, #f2e5d4 100%);
             border: 1px solid #b48b54;
             border-radius: 24px 12px 24px 12px;
@@ -34,7 +32,6 @@
             position: relative;
         }
 
-        /* гриф "СОВЕРШЕННО СЕКРЕТНО" */
         .stamp {
             position: absolute;
             top: 20px;
@@ -52,7 +49,6 @@
             box-shadow: 0 0 0 2px #2e241a;
         }
 
-        /* заголовок */
         .header h1 {
             font-size: 4rem;
             font-weight: 800;
@@ -79,22 +75,20 @@
             display: inline-block;
         }
 
-        /* видео блок */
         .video-container {
             margin: 2rem 0;
             border-radius: 32px;
             overflow: hidden;
             box-shadow: 0 20px 30px -12px black;
             border: 2px solid #ac8b60;
+            background: #000;
         }
 
-        .video-container iframe {
+        .video-container video {
             width: 100%;
-            aspect-ratio: 16 / 9;
             display: block;
         }
 
-        /* галерея */
         .gallery-section {
             margin: 2.5rem 0;
         }
@@ -121,6 +115,8 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
         }
 
         .slider img {
@@ -152,7 +148,6 @@
             transform: scale(0.95);
         }
 
-        /* дерзкий текст */
         .manifesto {
             background: #e7dccb;
             border-left: 14px solid #b9511b;
@@ -178,7 +173,6 @@
             letter-spacing: 4px;
         }
 
-        /* голосовой отказ */
         .voice-refusal {
             background: #2d241c;
             border-radius: 60px;
@@ -238,14 +232,12 @@
         <div class="subhead">▸ материал без цензуры. выбор только голосом.</div>
     </div>
 
-    <!-- ВИДЕО - клип (замени VIDEO_ID на свой) -->
+    <!-- ВИДЕО - из папки (Александра.mp4) -->
     <div class="video-container">
-        <iframe src="https://www.youtube.com/embed/VIDEO_ID?autoplay=0&mute=0" 
-                title="клип режиссёр-муза" 
-                frameborder="0" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                allowfullscreen>
-        </iframe>
+        <video controls preload="metadata">
+            <source src="Александра.mp4" type="video/mp4">
+            Твой браузер не поддерживает видео.
+        </video>
     </div>
 
     <!-- ФОТОГАЛЕРЕЯ (листалка) -->
@@ -260,7 +252,7 @@
         </div>
     </div>
 
-    <!-- МАНИФЕСТ — без извинений, без унижений -->
+    <!-- МАНИФЕСТ -->
     <div class="manifesto">
         <p>📢 Я НАПИСАЛ НА ЭМОЦИЯХ. ВСЁ, ЧТО НАПИСАЛ — ПРАВДА. ОСКОРБЛЕНИЙ НЕТ. УНИЖЕНИЯ НЕТ. ЕСТЬ ФАКТЫ И РЕАКЦИЯ НА ВАШУ ИГРУ.</p>
         <p>🎬 ТЫ — МУЗА. Я — РЕЖИССЁР. ЭТО НЕ ОБСУЖДАЕТСЯ.</p>
@@ -272,7 +264,7 @@
         ⚡ ЛУЧШЕ ХУЙ ТЫ НАЙДЁШЬ, ЧЕМ ТАКОГО РЕЖИССЁРА. ЭТО БЛЯТЬ ГАРАНТИЯ. ⚡
     </div>
 
-    <!-- ГОЛОСОВОЙ ОТКАЗ (работает через микрофон) -->
+    <!-- ГОЛОСОВОЙ ОТКАЗ -->
     <div class="voice-refusal">
         <p style="font-size: 1.6rem; margin-bottom: 10px;">🎙️ ТВОЙ ВЫБОР — ТВОЙ ГОЛОС</p>
         <p>Если хочешь закончить — скажи "НЕТ", "ОТКАЗ" или "ПРЕКРАЩАЮ" в микрофон. Или просто объясни причину. Система зафиксирует.</p>
@@ -288,7 +280,6 @@
 </div>
 
 <script>
-    // ----- ГАЛЕРЕЯ (замени ссылки на свои фото) -----
     const images = [
         "https://placehold.co/800x500/4a3624/f7e5cd?text=Образ+1",
         "https://placehold.co/800x500/5c4530/fbe9cf?text=Образ+2",
@@ -313,12 +304,11 @@
     });
     updateImage();
 
-    // ----- ГОЛОСОВОЙ ОТКАЗ (Speech Recognition) -----
     const recordBtn = document.getElementById("recordBtn");
     const statusDiv = document.getElementById("status");
 
     if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
-        statusDiv.innerText = "❌ Твой браузер не поддерживает голосовой хуй. Используй хром/сафари/эдж.";
+        statusDiv.innerText = "❌ Твой браузер не поддерживает голосовой ввод. Используй хром/сафари/эдж.";
         recordBtn.disabled = true;
     } else {
         const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -328,7 +318,7 @@
         recognition.maxAlternatives = 1;
 
         recordBtn.addEventListener("click", () => {
-            statusDiv.innerText = "🎙️ слушаю... скажи свой ответ (отказ или решение)";
+            statusDiv.innerText = "🎙️ слушаю... скажи свой ответ";
             recordBtn.disabled = true;
             recognition.start();
         });
@@ -338,23 +328,21 @@
             statusDiv.innerHTML = `🔊 Ты сказал(а): «${speechText}»<br>📩 Запись зафиксирована. Это твой голос — твой выбор.`;
             recordBtn.disabled = false;
 
-            // небольшое оповещение (можно убрать)
             if (speechText.includes("нет") || speechText.includes("отказ") || speechText.includes("прекращаю")) {
-                statusDiv.innerHTML += `<br><span style="color:#ffaa66;">⚡ Отказ принят. Дверь открыта — ты выбрала тишину.</span>`;
+                statusDiv.innerHTML += `<br><span style="color:#ffaa66;">⚡ Отказ принят. Дверь открыта.</span>`;
             } else {
                 statusDiv.innerHTML += `<br><span style="color:#b3d9ff;">🎭 Ты не сказала «нет». Продолжаем творческий диалог.</span>`;
             }
         };
 
         recognition.onerror = (event) => {
-            statusDiv.innerText = `❌ Ошибка микрофона: ${event.error}. попробуй ещё.`;
+            statusDiv.innerText = `❌ Ошибка: ${event.error}. попробуй ещё.`;
             recordBtn.disabled = false;
         };
 
         recognition.onend = () => {
             if (recordBtn.disabled) {
-                // если закончилось без результата
-                statusDiv.innerText = "🎙️ микрофон отключён. нажми кнопку, чтобы сказать снова.";
+                statusDiv.innerText = "🎙️ микрофон отключён. нажми кнопку снова.";
                 recordBtn.disabled = false;
             }
         };
