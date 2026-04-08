@@ -38,15 +38,12 @@
             right: 30px;
             background: #b37b42;
             color: #faf0dd;
-            font-family: monospace;
             font-weight: bold;
             font-size: 14px;
             padding: 8px 16px;
             transform: rotate(6deg);
             border-radius: 40px;
-            letter-spacing: 2px;
             border: 1px solid #f3cf9a;
-            box-shadow: 0 0 0 2px #2e241a;
         }
 
         .header h1 {
@@ -57,21 +54,15 @@
             text-transform: uppercase;
             border-left: 8px solid #c2813a;
             padding-left: 1.5rem;
-            margin: 1rem 0 0.5rem;
             font-family: 'Courier New', monospace;
         }
 
-        .header h1 span {
-            color: #9b5a2a;
-            font-size: 2rem;
-        }
-
+        .header h1 span { color: #9b5a2a; font-size: 2rem; }
         .subhead {
             font-size: 1.2rem;
             color: #6a4a2a;
             margin-bottom: 2rem;
             border-bottom: 2px dashed #dbbd8c;
-            padding-bottom: 0.75rem;
             display: inline-block;
         }
 
@@ -89,29 +80,16 @@
             display: block;
         }
 
-        .gallery-section {
-            margin: 2.5rem 0;
-        }
-
-        .gallery-title {
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: #3b2a1a;
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
+        .gallery-section { margin: 2.5rem 0; }
+        .gallery-title { font-size: 1.8rem; font-weight: bold; color: #3b2a1a; margin-bottom: 1rem; }
         .gallery-frame {
             background: #221c14;
             border-radius: 28px;
             padding: 20px;
-            box-shadow: inset 0 0 0 2px #9c7a56, 0 10px 20px rgba(0,0,0,0.2);
+            box-shadow: inset 0 0 0 2px #9c7a56;
         }
 
         .slider {
-            position: relative;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -134,19 +112,13 @@
             color: white;
             font-size: 2.2rem;
             font-weight: bold;
-            padding: 0 20px;
             border-radius: 60px;
             cursor: pointer;
-            transition: 0.2s;
-            margin: 0 10px;
             height: 60px;
             width: 60px;
         }
 
-        .nav-btn:hover {
-            background: #a56b2f;
-            transform: scale(0.95);
-        }
+        .nav-btn:hover { background: #a56b2f; transform: scale(0.95); }
 
         .manifesto {
             background: #e7dccb;
@@ -156,12 +128,9 @@
             font-size: 1.2rem;
             line-height: 1.6;
             font-family: 'Courier New', monospace;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
 
-        .manifesto p {
-            margin-bottom: 1rem;
-        }
+        .manifesto p { margin-bottom: 1rem; }
 
         .big-guarantee {
             font-size: 1.8rem;
@@ -192,18 +161,64 @@
             font-weight: bold;
             color: white;
             margin: 1rem 0;
-            transition: 0.1s linear;
         }
 
-        .mic-button:active {
-            background: #8a3f0c;
-            transform: scale(0.96);
-        }
+        .mic-button:active { background: #8a3f0c; transform: scale(0.96); }
 
         #status {
             font-family: monospace;
             margin-top: 15px;
             font-size: 1rem;
+        }
+
+        /* КОММЕНТАРИИ — голосовые сообщения */
+        .comments-section {
+            margin: 2rem 0;
+            background: #e7dccb;
+            border-radius: 28px;
+            padding: 1.5rem;
+            border: 2px solid #b48b54;
+        }
+
+        .comments-title {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #3b2a1a;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 2px solid #b48b54;
+            padding-bottom: 0.5rem;
+        }
+
+        .comment-list {
+            max-height: 300px;
+            overflow-y: auto;
+            margin-bottom: 1rem;
+        }
+
+        .comment-item {
+            background: #fef7ea;
+            border-left: 6px solid #b9511b;
+            padding: 0.8rem;
+            margin-bottom: 0.8rem;
+            border-radius: 12px;
+            font-family: monospace;
+            font-size: 0.9rem;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        }
+
+        .comment-time {
+            color: #8a6a42;
+            font-size: 0.7rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .comment-text {
+            color: #2a1a0a;
+            font-weight: bold;
+            word-break: break-word;
         }
 
         footer {
@@ -232,7 +247,7 @@
         <div class="subhead">▸ материал без цензуры. выбор только голосом.</div>
     </div>
 
-    <!-- ВИДЕО - из папки (Александра.mp4) -->
+    <!-- ВИДЕО -->
     <div class="video-container">
         <video controls preload="metadata">
             <source src="Александра.mp4" type="video/mp4">
@@ -240,7 +255,7 @@
         </video>
     </div>
 
-    <!-- ФОТОГАЛЕРЕЯ (листалка) -->
+    <!-- ФОТОГАЛЕРЕЯ -->
     <div class="gallery-section">
         <div class="gallery-title">📸 УЛИКИ / ОБРАЗЫ</div>
         <div class="gallery-frame">
@@ -264,13 +279,23 @@
         ⚡ ЛУЧШЕ ХУЙ ТЫ НАЙДЁШЬ, ЧЕМ ТАКОГО РЕЖИССЁРА. ЭТО БЛЯТЬ ГАРАНТИЯ. ⚡
     </div>
 
-    <!-- ГОЛОСОВОЙ ОТКАЗ -->
+    <!-- ГОЛОСОВОЙ ОТКАЗ + КОММЕНТАРИИ -->
     <div class="voice-refusal">
         <p style="font-size: 1.6rem; margin-bottom: 10px;">🎙️ ТВОЙ ВЫБОР — ТВОЙ ГОЛОС</p>
-        <p>Если хочешь закончить — скажи "НЕТ", "ОТКАЗ" или "ПРЕКРАЩАЮ" в микрофон. Или просто объясни причину. Система зафиксирует.</p>
-        <button class="mic-button" id="recordBtn">🎤 ЗАПИСАТЬ ОТКАЗ / РЕШЕНИЕ</button>
+        <p>Скажи в микрофон — твой ответ появится в комментариях внизу.</p>
+        <button class="mic-button" id="recordBtn">🎤 ЗАПИСАТЬ ГОЛОС</button>
         <div id="status">⚡ готов к записи. скажи правду.</div>
-        <p style="font-size: 0.85rem; margin-top: 20px;">✋ Без голоса — нет отказа. Молчание = продолжение творческого диалога.</p>
+    </div>
+
+    <!-- БЛОК КОММЕНТАРИЕВ -->
+    <div class="comments-section">
+        <div class="comments-title">💬 ГОЛОСОВЫЕ КОММЕНТАРИИ (стена)</div>
+        <div class="comment-list" id="commentList">
+            <div class="comment-item">
+                <div class="comment-time">⚡ система</div>
+                <div class="comment-text">Молчание = продолжение творческого диалога. Жду твоего голоса.</div>
+            </div>
+        </div>
     </div>
 
     <footer>
@@ -280,6 +305,7 @@
 </div>
 
 <script>
+    // ГАЛЕРЕЯ
     const images = [
         "https://placehold.co/800x500/4a3624/f7e5cd?text=Образ+1",
         "https://placehold.co/800x500/5c4530/fbe9cf?text=Образ+2",
@@ -291,24 +317,54 @@
     const prevBtn = document.getElementById("prevImg");
     const nextBtn = document.getElementById("nextImg");
 
-    function updateImage() {
-        galleryImg.src = images[currentIndex];
-    }
-    prevBtn.addEventListener("click", () => {
-        currentIndex = (currentIndex - 1 + images.length) % images.length;
-        updateImage();
-    });
-    nextBtn.addEventListener("click", () => {
-        currentIndex = (currentIndex + 1) % images.length;
-        updateImage();
-    });
+    function updateImage() { galleryImg.src = images[currentIndex]; }
+    prevBtn.addEventListener("click", () => { currentIndex = (currentIndex - 1 + images.length) % images.length; updateImage(); });
+    nextBtn.addEventListener("click", () => { currentIndex = (currentIndex + 1) % images.length; updateImage(); });
     updateImage();
 
+    // КОММЕНТАРИИ (сохраняются в localStorage)
+    let comments = [];
+
+    function loadComments() {
+        const saved = localStorage.getItem("faassen_comments");
+        if (saved) comments = JSON.parse(saved);
+        renderComments();
+    }
+
+    function saveComments() {
+        localStorage.setItem("faassen_comments", JSON.stringify(comments));
+        renderComments();
+    }
+
+    function addComment(text) {
+        const now = new Date();
+        const timeStr = now.toLocaleString("ru-RU", { hour: '2-digit', minute:'2-digit', day:'2-digit', month:'2-digit', hour12: false });
+        comments.unshift({
+            text: text,
+            time: timeStr
+        });
+        if (comments.length > 50) comments.pop();
+        saveComments();
+    }
+
+    function renderComments() {
+        const container = document.getElementById("commentList");
+        if (!container) return;
+        container.innerHTML = '<div class="comment-item"><div class="comment-time">⚡ система</div><div class="comment-text">Молчание = продолжение творческого диалога. Жду твоего голоса.</div></div>';
+        comments.forEach(c => {
+            const div = document.createElement("div");
+            div.className = "comment-item";
+            div.innerHTML = `<div class="comment-time">🎙️ голос · ${c.time}</div><div class="comment-text">«${c.text}»</div>`;
+            container.appendChild(div);
+        });
+    }
+
+    // ГОЛОСОВОЕ РАСПОЗНАВАНИЕ + ДОБАВЛЕНИЕ В КОММЕНТАРИИ
     const recordBtn = document.getElementById("recordBtn");
     const statusDiv = document.getElementById("status");
 
     if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
-        statusDiv.innerText = "❌ Твой браузер не поддерживает голосовой ввод. Используй хром/сафари/эдж.";
+        statusDiv.innerText = "❌ Браузер не поддерживает голосовой ввод. Используй Chrome/Edge/Safari.";
         recordBtn.disabled = true;
     } else {
         const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -318,21 +374,18 @@
         recognition.maxAlternatives = 1;
 
         recordBtn.addEventListener("click", () => {
-            statusDiv.innerText = "🎙️ слушаю... скажи свой ответ";
+            statusDiv.innerText = "🎙️ слушаю... скажи что хочешь";
             recordBtn.disabled = true;
             recognition.start();
         });
 
         recognition.onresult = (event) => {
-            const speechText = event.results[0][0].transcript.toLowerCase();
-            statusDiv.innerHTML = `🔊 Ты сказал(а): «${speechText}»<br>📩 Запись зафиксирована. Это твой голос — твой выбор.`;
+            const speechText = event.results[0][0].transcript;
+            statusDiv.innerHTML = `🔊 Распознано: «${speechText}»<br>📩 Добавлено в комментарии.`;
             recordBtn.disabled = false;
 
-            if (speechText.includes("нет") || speechText.includes("отказ") || speechText.includes("прекращаю")) {
-                statusDiv.innerHTML += `<br><span style="color:#ffaa66;">⚡ Отказ принят. Дверь открыта.</span>`;
-            } else {
-                statusDiv.innerHTML += `<br><span style="color:#b3d9ff;">🎭 Ты не сказала «нет». Продолжаем творческий диалог.</span>`;
-            }
+            // Добавляем в комментарии
+            addComment(speechText);
         };
 
         recognition.onerror = (event) => {
@@ -347,6 +400,8 @@
             }
         };
     }
+
+    loadComments();
 </script>
 </body>
 </html>
